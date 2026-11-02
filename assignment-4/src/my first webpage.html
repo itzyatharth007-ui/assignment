@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Yatharth.Varshney">
+  <title>The Ultimate Form - BTech Year 1 Assignment 02</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ebf3f7;
+      color: #1a2a36;
+      padding: 32px 16px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-container {
+      width: 100%;
+      max-width: 760px;
+    }
+
+    /* Outer Header Section */
+    .assignment-header {
+      margin-bottom: 24px;
+    }
+
+    .assignment-header .breadcrumb {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #0b5c68;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .assignment-header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0a3d47;
+      margin-bottom: 6px;
+    }
+
+    .assignment-header .subtitle {
+      font-size: 14px;
+      color: #4a636f;
+    }
+
+    /* Mock Window Card */
+    .mock-window {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+      border: 1px solid #d4e2e8;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .window-header {
+      background-color: #e2ecf1;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #d0dee5;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #5c7b88;
+    }
+
+    .window-title {
+      margin-left: 8px;
+      font-size: 12px;
+      color: #4b6672;
+      font-family: monospace;
+    }
+
+    /* Form Content */
+    .form-wrapper {
+      padding: 32px 40px 40px;
+    }
+
+    .form-title-area {
+      margin-bottom: 28px;
+    }
+
+    .form-title-area h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0d2833;
+      margin-bottom: 6px;
+    }
+
+    .form-title-area p {
+      font-size: 14px;
+      color: #4c6874;
+    }
+
+    fieldset {
+      border: none;
+      margin-bottom: 26px;
+      padding: 0;
+    }
+
+    legend {
+      font-size: 15px;
+      font-weight: 700;
+      color: #085f6c;
+      margin-bottom: 18px;
+      width: 100%;
+      border: none;
+    }
+
+    .field-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #21333d;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 14px;
+      border: 1px solid #a9bec7;
+      border-radius: 4px;
+      color: #1a2c35;
+      background-color: #ffffff;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="tel"]:focus,
+    input[type="url"]:focus,
+    input[type="number"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #0f6c7b;
+      box-shadow: 0 0 0 2px rgba(15, 108, 123, 0.15);
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 7px 10px;
+      font-size: 13.5px;
+      border: 1px solid #a9bec7;
+      border-radius: 4px;
+      background-color: #ffffff;
+      color: #4a636f;
+      cursor: pointer;
+    }
+
+    /* Choice row (Radio & Checkbox) */
+    .inline-choice-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .inline-choice-group .group-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #21333d;
+      min-width: 55px;
+      margin-bottom: 0;
+    }
+
+    .choice-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      color: #21333d;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .choice-item input {
+      accent-color: #0f6c7b;
+      cursor: pointer;
+    }
+
+    /* Range slider custom styling */
+    .range-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      accent-color: #0f6c7b;
+      background: #c3d9df;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Color picker row */
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    input[type="color"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 44px;
+      height: 28px;
+      background: none;
+      border: 1px solid #89aab7;
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+      border: none;
+      border-radius: 2px;
+    }
+
+    /* Form Buttons */
+    .button-group {
+      display: flex;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    button,
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 9px 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.15s ease-in-out;
+    }
+
+    .btn-submit {
+      background-color: #176874;
+      color: #ffffff;
+    }
+
+    .btn-submit:hover {
+      background-color: #11535d;
+    }
+
+    .btn-reset {
+      background-color: #1b5e68;
+      color: #ffffff;
+    }
+
+    .btn-reset:hover {
+      background-color: #134951;
+    }
+
+    /* Bottom Info Card */
+    .info-card {
+      background-color: #d8e9ef;
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #1d404a;
+      margin-bottom: 14px;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: #557582;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-container">
+    <!-- Header -->
+    <header class="assignment-header">
+      <div class="breadcrumb">BTech Year 1 &nbsp;/&nbsp; HTML &amp; CSS &nbsp;/&nbsp; Assignment 02</div>
+      <h1>The Ultimate Form</h1>
+      <div class="subtitle">Week 3 &bull; Complete single-column form &bull; Author: Yatharth.Varshney</div>
+    </header>
+
+    <!-- Browser Mock Window -->
+    <div class="mock-window">
+      <div class="window-header">
+        <div class="window-dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="window-title">02-form/index.html</div>
+      </div>
+
+      <div class="form-wrapper">
+        <div class="form-title-area">
+          <h2>Application Form</h2>
+          <p>Student internship application &bull; * Required</p>
+        </div>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+          <!-- Hidden author field -->
+          <input type="hidden" name="author" value="Yatharth.Varshney">
+
+          <!-- Fieldset 1: Personal Details -->
+          <fieldset>
+            <legend>Personal Details &nbsp;/&nbsp; fieldset + legend</legend>
+
+            <!-- Text input -->
+            <div class="field-group">
+              <label for="fullName">Full name *</label>
+              <input 
+                type="text" 
+                id="fullName" 
+                name="full_name" 
+                placeholder="Yatharth Varshney" 
+                minlength="3" 
+                required
+              >
+            </div>
+
+            <!-- Email input -->
+            <div class="field-group">
+              <label for="userEmail">Email *</label>
+              <input 
+                type="email" 
+                id="userEmail" 
+                name="email" 
+                placeholder="itz.yatharth.11gmail.com" 
+                required
+              >
+            </div>
+
+            <!-- Password input -->
+            <div class="field-group">
+              <label for="userPassword">Password *</label>
+              <input 
+                type="password" 
+                id="userPassword" 
+                name="password" 
+                placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" 
+                minlength="8" 
+                required
+              >
+            </div>
+
+            <!-- Tel input with pattern -->
+            <div class="field-group">
+              <label for="userPhone">Phone *</label>
+              <input 
+                type="tel" 
+                id="userPhone" 
+                name="phone" 
+                placeholder="9389356607" 
+                pattern="[0-9]{10}" 
+                title="Please enter a valid 10-digit mobile number" 
+                required
+              >
+            </div>
+
+            <!-- URL input -->
+            <div class="field-group">
+              <label for="portfolioUrl">Portfolio URL</label>
+              <input 
+                type="url" 
+                id="portfolioUrl" 
+                name="portfolio_url" 
+                placeholder="https://example.com"
+              >
+            </div>
+
+            <!-- Number input with min & max -->
+            <div class="field-group">
+              <label for="userAge">Age *</label>
+              <input 
+                type="number" 
+                id="userAge" 
+                name="age" 
+                placeholder="18" 
+                min="16" 
+                max="99" 
+                required
+              >
+            </div>
+
+            <!-- Radio inputs -->
+            <div class="inline-choice-group">
+              <span class="group-title">Gender:</span>
+              <label class="choice-item" for="genderMale">
+                <input type="radio" id="genderMale" name="gender" value="Male"> Male
+              </label>
+              <label class="choice-item" for="genderFemale">
+                <input type="radio" id="genderFemale" name="gender" value="Female"> Female
+              </label>
+              <label class="choice-item" for="genderOther">
+                <input type="radio" id="genderOther" name="gender" value="Other" checked> Other / prefer not to say
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Fieldset 2: Education -->
+          <fieldset>
+            <legend>Education &nbsp;/&nbsp; fieldset + legend</legend>
+
+            <!-- Select dropdown with options -->
+            <div class="field-group">
+              <label for="courseSelect">Course *</label>
+              <select id="courseSelect" name="course" required>
+                <option value="">Select a course</option>
+                <option value="btech_cse" selected>BTech &mdash; Computer Science</option>
+                <option value="btech_it">BTech &mdash; Information Technology</option>
+                <option value="btech_ece">BTech &mdash; Electronics &amp; Communication</option>
+                <option value="bca">Bachelor of Computer Applications (BCA)</option>
+              </select>
+            </div>
+
+            <!-- Datalist input -->
+            <div class="field-group">
+              <label for="cityDatalist">Preferred city (datalist)</label>
+              <input 
+                type="text" 
+                id="cityDatalist" 
+                name="preferred_city" 
+                list="cityOptions" 
+                placeholder="Delhi"
+              >
+              <datalist id="cityOptions">
+                <option value="Delhi">
+                <option value="Noida">
+                <option value="Bengaluru">
+                <option value="Hyderabad">
+                <option value="Pune">
+                <option value="Mumbai">
+                <option value="Dehradun">
+              </datalist>
+            </div>
+
+            <!-- Checkbox inputs -->
+            <div class="inline-choice-group">
+              <span class="group-title">Skills:</span>
+              <label class="choice-item" for="skillHtml">
+                <input type="checkbox" id="skillHtml" name="skills" value="HTML" checked> HTML
+              </label>
+              <label class="choice-item" for="skillCss">
+                <input type="checkbox" id="skillCss" name="skills" value="CSS" checked> CSS
+              </label>
+              <label class="choice-item" for="skillJs">
+                <input type="checkbox" id="skillJs" name="skills" value="JavaScript"> JavaScript
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Fieldset 3: Upload & Extras -->
+          <fieldset>
+            <legend>Upload &amp; Extras &nbsp;/&nbsp; fieldset + legend</legend>
+
+            <!-- Date input -->
+            <div class="field-group">
+              <label for="availableDate">Available from</label>
+              <input type="date" id="availableDate" name="available_date" value="2026-11-15">
+            </div>
+
+            <!-- Time input -->
+            <div class="field-group">
+              <label for="interviewTime">Interview time</label>
+              <input type="time" id="interviewTime" name="interview_time" value="10:30">
+            </div>
+
+            <!-- File input -->
+            <div class="field-group">
+              <label for="resumeFile">Resume *</label>
+              <input 
+                type="file" 
+                id="resumeFile" 
+                name="resume" 
+                accept=".pdf,.doc,.docx" 
+                required
+              >
+            </div>
+
+            <!-- Range input -->
+            <div class="field-group">
+              <div class="range-label-row">
+                <label for="stipendRange">Expected monthly stipend: &#8377;<span id="stipendVal">10,000</span></label>
+              </div>
+              <input 
+                type="range" 
+                id="stipendRange" 
+                name="stipend" 
+                min="0" 
+                max="50000" 
+                step="1000" 
+                value="10000" 
+                oninput="document.getElementById('stipendVal').innerText = Number(this.value).toLocaleString('en-IN')"
+              >
+            </div>
+
+            <!-- Color input -->
+            <div class="color-row">
+              <label for="favouriteColor">Favourite colour:</label>
+              <input type="color" id="favouriteColor" name="fav_color" value="#1c5d67">
+            </div>
+
+            <!-- Textarea -->
+            <div class="field-group" style="margin-top: 18px;">
+              <label for="joiningReason">Why would you like to join?</label>
+              <textarea 
+                id="joiningReason" 
+                name="reason" 
+                rows="4" 
+                placeholder="I want to practise HTML and CSS on real projects."
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <!-- Form Action Buttons -->
+          <div class="button-group">
+            <input type="submit" class="btn-submit" value="Submit application">
+            <input type="reset" class="btn-reset" value="Reset">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Instructions Banner -->
+    <div class="info-card">
+      Use linked labels, 5+ required fields and validation attributes. Submit an empty required field to see the browser warning. File upload, slider, colour and choice controls must work.
+    </div>
+
+    <p class="footer-note">Sample content and design. Author: Yatharth.Varshney. Follow ASSIGNMENTS.md for code, Git and README requirements.</p>
+  </div>
+
+</body>
+</html>

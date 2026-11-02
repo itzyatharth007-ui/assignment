@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTECH YEAR 1 / HTML & CSS / ASSIGNMENT 05 - Yatharth Varshney</title>
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS & RESET
+       ========================================================================== */
+    :root {
+      --color-brand-cyan: #0891b2;
+      --color-nav-bg: #0c363f;
+      --color-hero-bg: #225a47;
+      --color-hero-overlay: rgba(14, 46, 36, 0.45);
+      --color-accent-teal: #166069;
+      --color-accent-teal-hover: #0f464d;
+      --color-text-dark: #0f172a;
+      --color-text-body: #334155;
+      --color-text-muted: #64748b;
+      --color-text-light: #ffffff;
+      --color-gold: #e2ba7d;
+      --color-border-subtle: #cbd5e1;
+      --color-callout-bg: #e0f2fe;
+      --color-callout-border: #bae6fd;
+      --color-callout-text: #0369a1;
+
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f8fafc;
+      font-family: var(--font-family);
+      color: var(--color-text-body);
+      line-height: 1.5;
+      padding: 40px 24px 60px 24px;
+    }
+
+    /* Outer Container */
+    .page-container {
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    /* Top Assignment Meta Header */
+    .meta-tag {
+      color: var(--color-brand-cyan);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .page-title {
+      font-size: 30px;
+      font-weight: 800;
+      color: #0c363f;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .meta-sub {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    /* Website Shell */
+    .website-wrapper {
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+    }
+
+    /* ==========================================================================
+       NAVIGATION BAR (Normal Flow & Text Alignment)
+       ========================================================================== */
+    .navbar {
+      background-color: var(--color-nav-bg);
+      color: var(--color-text-light);
+      padding: 14px 24px;
+    }
+
+    .nav-brand {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.8px;
+      vertical-align: middle;
+      width: 40%;
+    }
+
+    .nav-links {
+      display: inline-block;
+      text-align: right;
+      width: 59%;
+      list-style: none;
+      vertical-align: middle;
+    }
+
+    .nav-links li {
+      display: inline-block;
+      margin-left: 18px;
+    }
+
+    .nav-links li a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       HERO SECTION (Positioning, Z-Index, Overlay & Background Styling)
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      background-color: var(--color-hero-bg);
+      background-image: radial-gradient(circle at 80% 20%, #2f755e 0%, var(--color-hero-bg) 70%);
+      padding: 44px 32px 52px 32px;
+      color: var(--color-text-light);
+      overflow: hidden;
+    }
+
+    /* Overlay utilizing absolute positioning & z-index */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-hero-overlay);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 560px;
+    }
+
+    .hero-tag {
+      color: var(--color-gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      margin-bottom: 16px;
+    }
+
+    .hero-headline {
+      font-size: 34px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: #e2e8f0;
+      margin-bottom: 24px;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background-color: var(--color-accent-teal);
+      color: var(--color-text-light);
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-cta:hover {
+      background-color: var(--color-accent-teal-hover);
+    }
+
+    /* ==========================================================================
+       ABOUT & SERVICES SECTION (3 Card Variants via inline-block)
+       ========================================================================== */
+    .content-area {
+      padding: 32px 28px 40px 28px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-text-dark);
+      margin-bottom: 20px;
+    }
+
+    .cards-row {
+      /* Removes inline-block white-space gaps */
+      font-size: 0;
+      margin-left: -1%;
+      margin-right: -1%;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 14px;
+      width: 31.33%;
+      margin: 0 1%;
+      padding: 22px 20px;
+      min-height: 160px;
+    }
+
+    .card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 13.5px;
+      color: #475569;
+    }
+
+    /* Card Variant 1: Subtle shadow & soft rounded border */
+    .card-variant-1 {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    .card-variant-1 h4 {
+      color: var(--color-text-dark);
+    }
+
+    /* Card Variant 2: Warm tinted background with golden border */
+    .card-variant-2 {
+      background-color: #fffdfa;
+      border: 2px solid #d99b38;
+      border-radius: 4px;
+    }
+    .card-variant-2 h4 {
+      color: #92400e;
+    }
+
+    /* Card Variant 3: Crisp deep-teal border */
+    .card-variant-3 {
+      background-color: #ffffff;
+      border: 2px solid #285466;
+      border-radius: 4px;
+    }
+    .card-variant-3 h4 {
+      color: #1e3a47;
+    }
+
+    /* ==========================================================================
+       GALLERY & TESTIMONIALS SECTION
+       ========================================================================== */
+    .banner-graphic {
+      width: 100%;
+      height: 145px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .banner-graphic svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      font-style: italic;
+      color: #334155;
+      margin-bottom: 12px;
+    }
+
+    .store-address {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 32px;
+    }
+
+    /* ==========================================================================
+       CONTACT FORM SECTION
+       ========================================================================== */
+    .contact-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-text-dark);
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--color-text-dark);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 4px;
+      background-color: #ffffff;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-accent-teal);
+    }
+
+    .btn-submit {
+      display: inline-block;
+      background-color: var(--color-accent-teal);
+      color: var(--color-text-light);
+      padding: 10px 22px;
+      border: none;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      margin-top: 6px;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--color-accent-teal-hover);
+    }
+
+    /* ==========================================================================
+       FOOTER (Normal Flow)
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--color-nav-bg);
+      color: var(--color-text-light);
+      padding: 16px 24px;
+    }
+
+    .footer-copy {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      width: 40%;
+      vertical-align: middle;
+    }
+
+    .footer-links {
+      display: inline-block;
+      width: 59%;
+      text-align: right;
+      list-style: none;
+      vertical-align: middle;
+    }
+
+    .footer-links li {
+      display: inline-block;
+      margin-left: 16px;
+    }
+
+    .footer-links li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .footer-links li a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       PROMPT CALLOUT & FOOTER NOTE
+       ========================================================================== */
+    .info-callout {
+      margin-top: 32px;
+      padding: 18px 24px;
+      background-color: var(--color-callout-bg);
+      border: 1px solid var(--color-callout-border);
+      border-radius: 8px;
+      color: var(--color-callout-text);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .assignment-footnote {
+      margin-top: 18px;
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-container">
+
+    <!-- Assignment 05 Meta Header -->
+    <header>
+      <p class="meta-tag">BTECH YEAR 1 &nbsp;/&nbsp; HTML &amp; CSS &nbsp;/&nbsp; ASSIGNMENT 05 &bull; YATHARTH VARSHNEY</p>
+      <h1 class="page-title">Business Landing Website</h1>
+      <p class="meta-sub">Weeks 5-6 &middot; Desktop caf&eacute; example &bull; Illustrative expected output</p>
+    </header>
+
+    <!-- Main Website Shell -->
+    <div class="website-wrapper">
+
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <div class="nav-brand">LEAF &amp; BEAN</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#favourites">About</a></li>
+          <li><a href="#favourites">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hero Section with Absolute Overlay and Z-Index -->
+      <section class="hero-section" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-tag">YOUR NEIGHBOURHOOD CAF&Eacute;</div>
+          <h2 class="hero-headline">Good coffee.<br>A little room to pause.</h2>
+          <p class="hero-sub">Fresh brews and warm bites.</p>
+          <a href="#contact" class="btn-cta">Visit us</a>
+        </div>
+      </section>
+
+      <!-- Content Area -->
+      <div class="content-area">
+
+        <!-- About / Services Section: 3 Distinct Card Variants -->
+        <section id="favourites">
+          <h3 class="section-title">Our favourites</h3>
+          
+          <div class="cards-row">
+            <!-- Card 1: Rounded border & drop shadow -->
+            <article class="card card-variant-1">
+              <h4>Fresh brews</h4>
+              <p>Coffee, made your way.</p>
+            </article><!--
+         --><!-- Card 2: Warm background & amber border -->
+            <article class="card card-variant-2">
+              <h4>Warm bites</h4>
+              <p>Sandwiches and treats.</p>
+            </article><!--
+         --><!-- Card 3: Deep teal solid border -->
+            <article class="card card-variant-3">
+              <h4>Study corner</h4>
+              <p>Space for your ideas.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Gallery / Visual Accent -->
+        <section class="gallery-section">
+          <div class="banner-graphic">
+            <svg viewBox="0 0 900 150" preserveAspectRatio="none" imgs="./src/cafe.jpg" xmlns="http://www.w3.org/2000/svg" class="art-svg"> 
+              <rect width="100%" height="100%" fill="#dbe6dc" />
+              <!-- Soft Moon / Sun Accent -->
+              <ellipse cx="680" cy="42" rx="55" ry="16" fill="#fef08a" />
+              <!-- Geometric Mountain Ridge 1 -->
+              <polygon points="0,150 330,45 650,150" fill="#69947e" />
+              <!-- Geometric Mountain Ridge 2 -->
+              <polygon points="400,150 710,65 950,150" fill="#3b6957" />
+            </svg>
+          </div>
+          <p class="testimonial-text">&ldquo;A lovely place for a study break.&rdquo;</p>
+          <p class="store-address">12 College Road, Bareilly</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+          <h3 class="contact-title">Come say hello</h3>
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" class="form-control" value="Yatharth Varshney">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" value="yatharth@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <input type="text" id="message" name="message" class="form-control" value="I would like to ask about your study corner.">
+            </div>
+
+            <button type="submit" class="btn-submit">Send message</button>
+          </form>
+        </section>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-copy">&copy; 2026 LEAF &amp; BEAN &bull; YATHARTH VARSHNEY</div>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#favourites">About</a></li>
+          <li><a href="#favourites">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </footer>
+
+    </div>
+
+    <!-- Assignment Prompt Requirements Box -->
+    <div class="info-callout">
+      Use normal flow / inline-block and positioning. Include a positioned hero overlay, 3 card styles, images, contact form and footer. Practise box model, backgrounds, borders and overflow.
+    </div>
+
+    <div class="assignment-footnote">
+      Sample content and design. Follow ASSIGNMENTS.md for code, Git and README requirements[cite: 3].
+    </div>
+
+  </div>
+
+</body>
+</html>

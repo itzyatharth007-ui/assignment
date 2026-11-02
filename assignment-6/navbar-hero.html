@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 / navbar-hero.html - Yatharth Varshney</title>
+  <style>
+    :root {
+      --color-nav-bg: #0c363f;
+      --color-hero-bg: #ddede5;
+      --color-teal-btn: #166069;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-family); background-color: #f8fafc; padding: 24px; }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--color-nav-bg);
+      padding: 14px 24px;
+      color: #ffffff;
+    }
+    .brand { font-weight: 800; font-size: 14px; letter-spacing: 0.8px; }
+    .nav-links { display: flex; list-style: none; gap: 20px; }
+    .nav-links a { color: #e2e8f0; text-decoration: none; font-size: 13.5px; font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; text-decoration: underline; }
+    .hero-banner {
+      background-color: var(--color-hero-bg);
+      padding: 56px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+    }
+    .hero-banner h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.4px; }
+    .hero-banner p { font-size: 15px; color: #334155; }
+    .btn-explore { background-color: var(--color-teal-btn); color: #ffffff; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-size: 13.5px; font-weight: 600; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="brand">CAMPUS STORE &bull; YATHARTH VARSHNEY</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-banner">
+      <h1>Small essentials. Big campus energy.</h1>
+      <p>Everything you need for a productive semester.</p>
+      <a href="#" class="btn-explore">Explore</a>
+    </div>
+  </header>
+</body>
+</html>

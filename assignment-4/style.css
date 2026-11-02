@@ -1,0 +1,374 @@
+/* ==========================================================================
+   DESIGN TOKENS (CSS Variables in :root)
+   ========================================================================== */
+:root {
+  /* Intentional Colour Palette (Navy, Deep Teal, Soft Sage, Cyan, Light Slate) */
+  --color-primary-navy: #103b47;       /* Main dark headers & navbars */
+  --color-accent-teal: #578a7f;        /* Mid accents & avatar tones */
+  --color-dark-teal: #14535a;          /* Action button background */
+  --color-hero-bg: #ddede5;            /* Soft sage background in hero */
+  --color-avatar-bg: #cfe3da;          /* Silhouette card background */
+  --color-brand-cyan: #0891b2;         /* Meta category cyan */
+  --color-text-main: #1f2937;          /* Body text color */
+  --color-text-muted: #64748b;         /* Subtitles & captions */
+  --color-text-light: #ffffff;         /* Nav and button text */
+  --color-card-border: #cbd5e1;        /* Subtle project card border */
+  --color-callout-bg: #e0f2fe;         /* Blue info box background */
+  --color-callout-border: #bae6fd;     /* Blue info box outline */
+  --color-callout-text: #0369a1;       /* Blue info text */
+
+  /* Typography Pairing */
+  --font-headings: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Font Sizes */
+  --font-size-hero: 38px;
+  --font-size-h3: 20px;
+  --font-size-base: 15px;
+  --font-size-sm: 13px;
+
+  /* Spacing Tokens */
+  --spacing-xs: 6px;
+  --spacing-sm: 12px;
+  --spacing-md: 20px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+}
+
+/* ==========================================================================
+   BASE / ELEMENT SELECTORS
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-text-main);
+  background-color: #ffffff;
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-xl) 24px 80px 24px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-headings);
+  color: var(--color-primary-navy);
+  font-weight: 700;
+}
+
+ul, ol {
+  list-style-position: inside;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+/* ==========================================================================
+   LAYOUT WRAPPER
+   ========================================================================== */
+.page-container {
+  width: 100%;
+  max-width: 950px;
+}
+
+/* ==========================================================================
+   ASSIGNMENT HEADER
+   ========================================================================== */
+.assignment-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.meta-tag {
+  color: var(--color-brand-cyan);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-primary-navy);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.meta-sub {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (Class & Descendant / Child Selectors)
+   ========================================================================== */
+.navbar {
+  background-color: var(--color-primary-navy);
+  color: var(--color-text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+}
+
+.nav-brand {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.nav-links li a {
+  color: #e2e8f0;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+/* Pseudo-class Selector */
+.nav-links li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   HERO BANNER (ID & Descendant Selectors)
+   ========================================================================== */
+#hero {
+  background-color: var(--color-hero-bg);
+  padding: 44px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-badge {
+  display: inline-block;
+  color: var(--color-dark-teal);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-headline {
+  font-size: var(--font-size-hero);
+  line-height: 1.15;
+  color: var(--color-primary-navy);
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: #334155;
+  margin-bottom: 24px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-dark-teal);
+  color: var(--color-text-light);
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Pseudo-class Selector */
+.btn-primary:hover {
+  background-color: #0b3438;
+  transform: translateY(-1px);
+}
+
+/* Hero Avatar */
+.hero-avatar-box {
+  width: 140px;
+  height: 165px;
+  background-color: var(--color-avatar-bg);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 4px;
+}
+
+.avatar-svg {
+  width: 115px;
+  height: 130px;
+}
+
+/* ==========================================================================
+   MAIN CONTENT SECTIONS
+   ========================================================================== */
+.main-content {
+  padding-top: var(--spacing-xl);
+}
+
+.content-block {
+  margin-bottom: 36px;
+}
+
+.content-block h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--spacing-sm);
+}
+
+.content-block p {
+  color: #334155;
+  font-size: 15px;
+}
+
+.edu-meta {
+  color: #475569;
+  margin-bottom: var(--spacing-xs);
+}
+
+.bullet-list, .num-list {
+  padding-left: 20px;
+  margin-bottom: var(--spacing-xs);
+  color: #334155;
+}
+
+.bullet-list {
+  list-style-type: disc;
+}
+
+.topic-keys {
+  margin-top: var(--spacing-xs);
+  color: #334155;
+}
+
+.email-link {
+  color: var(--color-primary-navy);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   SELECTED PROJECTS (Grid & Cards)
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.project-card {
+  border: 1px solid var(--color-card-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Pseudo-class on project card */
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.project-art {
+  width: 100%;
+  height: 135px;
+  overflow: hidden;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.project-art svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.project-info {
+  padding: 18px 20px 22px 20px;
+}
+
+.project-info h4 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.project-info p {
+  font-size: 13.5px;
+  color: #475569;
+}
+
+/* ==========================================================================
+   FOOTER (Element & Pseudo-classes)
+   ========================================================================== */
+.site-footer {
+  background-color: var(--color-primary-navy);
+  color: var(--color-text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  margin-top: var(--spacing-xl);
+}
+
+.footer-copy {
+  font-family: var(--font-headings);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.footer-links li a {
+  color: #cbd5e1;
+  font-size: var(--font-size-sm);
+}
+
+.footer-links li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   INSTRUCTIONS CALLOUT & ASSIGNMENT FOOTER
+   ========================================================================== */
+.info-callout {
+  margin-top: 36px;
+  padding: 18px 24px;
+  background-color: var(--color-callout-bg);
+  border: 1px solid var(--color-callout-border);
+  border-radius: 8px;
+  color: var(--color-callout-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer-note {
+  margin-top: 18px;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}

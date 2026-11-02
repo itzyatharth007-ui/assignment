@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 / products.html - Yatharth Varshney</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f8fafc; padding: 32px 24px; }
+    .product-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+    .product-card {
+      flex: 1 1 calc(25% - 16px);
+      min-width: 200px;
+      max-width: calc(25% - 12px);
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-image { width: 100%; height: 95px; background-color: #dbe6dc; }
+    .product-image svg { width: 100%; height: 100%; display: block; }
+    .product-details { padding: 12px 14px; }
+    .product-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+    .product-price { font-size: 13.5px; color: #334155; }
+  </style>
+</head>
+<body>
+  <div class="product-grid">
+    <!-- Items 1 to 8 -->
+    <article class="product-card"><div class="product-image"><svg viewBox="0 0 200 95" preserveAspectRatio="none"><ellipse cx="160" cy="25" rx="18" ry="8" fill="#fef08a"/><polygon points="0,95 70,30 145,95" fill="#69947e"/><polygon points="90,95 155,40 215,95" fill="#3b6957"/></svg></div><div class="product-details"><div class="product-title">Product 01</div><div class="product-price">₹199</div></div></article>
+    <article class="product-card"><div class="product-image"><svg viewBox="0 0 200 95" preserveAspectRatio="none"><ellipse cx="160" cy="25" rx="18" ry="8" fill="#fef08a"/><polygon points="0,95 70,30 145,95" fill="#69947e"/><polygon points="90,95 155,40 215,95" fill="#3b6957"/></svg></div><div class="product-details"><div class="product-title">Product 02</div><div class="product-price">₹249</div></div></article>
+    <article class="product-card"><div class="product-image"><svg viewBox="0 0 200 95" preserveAspectRatio="none"><ellipse cx="160" cy="25" rx="18" ry="8" fill="#fef08a"/><polygon points="0,95 70,30 145,95" fill="#69947e"/><polygon points="90,95 155,40 215,95" fill="#3b6957"/></svg></div><div class="product-details"><div class="product-title">Product 03</div><div class="product-price">₹299</div></div></article>
+    <article class="product-card"><div class="product-image"><svg viewBox="0 0 200 95" preserveAspectRatio="none"><ellipse cx="160" cy="25" rx="18" ry="8" fill="#fef08a"/><polygon points="0,95 70,30 145,95" fill="#69947e"/><polygon points="90,95 155,40 215,95" fill="#3b6957"/></svg></div><div class="product-details"><div class="product-title">Product 04</div><div class="product-price">₹349</div></div></article>
+    <article class="product-card"><div class="product-image"><svg viewBox="0 0 200 95" preserveAspectRatio="none"><ellipse cx="160" cy="25" rx="18" ry="8" fill="#fef08a"/><polygon points="0,95 70,30 145,95" fill="#69947e"/><polygon points="90,95 155,40 215,95" fill="#3b6957"/></svg></div><div class="product-details"><div class="product-title">Product 05</div><div class="product-price">₹399</div></div></article>
+    <article class="product-card"><div class="product-image"><svg viewBox="0 0 200 95" preserveAspectRatio="none"><ellipse cx="160" cy="25" rx="18" ry="8" fill="#fef08a"/><polygon points="0,95 70,30 145,95" fill="#69947e"/><polygon points="90,95 155,40 215,95" fill="#3b6957"/></svg></div><div class="product-details"><div class="product-title">Product 06</div><div class="product-price">₹449</div></div></article>
+    <article class="product-card"><div class="product-image"><svg viewBox="0 0 200 95" preserveAspectRatio="none"><ellipse cx="160" cy="25" rx="18" ry="8" fill="#fef08a"/><polygon points="0,95 70,30 145,95" fill="#69947e"/><polygon points="90,95 155,40 215,95" fill="#3b6957"/></svg></div><div class="product-details"><div class="product-title">Product 07</div><div class="product-price">₹499</div></div></article>
+    <article class="product-card"><div class="product-image"><svg viewBox="0 0 200 95" preserveAspectRatio="none"><ellipse cx="160" cy="25" rx="18" ry="8" fill="#fef08a"/><polygon points="0,95 70,30 145,95" fill="#69947e"/><polygon points="90,95 155,40 215,95" fill="#3b6957"/></svg></div><div class="product-details"><div class="product-title">Product 08</div><div class="product-price">₹549</div></div></article>
+  </div>
+</body>
+</html>

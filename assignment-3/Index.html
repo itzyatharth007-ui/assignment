@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTECH YEAR 1 / HTML & CSS / ASSIGNMENT 03 - Yatharth Varshney</title>
+  <style>
+    
+    /* -------------------------------------------------------------
+       CSS VARIABLES DEFINED IN :root
+       Controls colors, spacing, fonts, and borders across the table
+    -------------------------------------------------------------- */
+    :root {
+      /* Colors */
+      --color-page-bg: #f8fafc;
+      --color-text-dark: #0f172a;
+      --color-text-muted: #64748b;
+      --color-brand-cyan: #0891b2;
+      --color-header-bg: #0e3b5e;
+      --color-header-text: #ffffff;
+      --color-border: #cbd5e1;
+      --color-row-even: #f1f5f9;
+      --color-row-odd: #ffffff;
+      --color-row-hover: #e2e8f0;
+      --color-info-box-bg: #e0f2fe;
+      --color-info-box-border: #bae6fd;
+      --color-info-box-text: #0369a1;
+
+      /* Spacing */
+      --table-cell-padding-y: 12px;
+      --table-cell-padding-x: 16px;
+      --sub-cell-padding-y: 9px;
+      --sub-cell-padding-x: 12px;
+
+      /* Typography */
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      --font-size-base: 13.5px;
+      --font-size-title: 28px;
+      --font-size-caption: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-page-bg);
+      color: var(--color-text-dark);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: 1.5;
+      padding: 40px 32px 60px 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-container {
+      width: 100%;
+      max-width: 1050px;
+    }
+
+    /* Top Subhead / Meta Info */
+    .assignment-meta {
+      color: var(--color-brand-cyan);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .main-title {
+      font-size: var(--font-size-title);
+      font-weight: 800;
+      color: var(--color-header-bg);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .sub-title {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    /* -------------------------------------------------------------
+       TABLE STYLING
+    -------------------------------------------------------------- */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--color-border);
+      text-align: left;
+    }
+
+    /* Table Caption */
+    caption {
+      text-align: left;
+      font-size: var(--font-size-caption);
+      font-weight: 800;
+      color: #0f172a;
+      padding-bottom: 18px;
+      caption-side: top;
+    }
+
+    /* Cells Base Styling */
+    th, td {
+      border: 1px solid var(--color-border);
+      padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+      vertical-align: middle;
+      font-size: var(--font-size-base);
+    }
+
+    /* Table Header Grid */
+    thead th {
+      background-color: var(--color-header-bg);
+      color: var(--color-header-text);
+      font-weight: 600;
+    }
+
+    thead th[scope="col"][rowspan="2"] {
+      vertical-align: top;
+      padding-top: 14px;
+    }
+
+    .sub-th {
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: var(--sub-cell-padding-y) var(--sub-cell-padding-x);
+    }
+
+    /* Table Body */
+    tbody tr:nth-child(even) {
+      background-color: var(--color-row-even);
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: var(--color-row-odd);
+    }
+
+    /* Hover effect */
+    tbody tr:hover {
+      background-color: var(--color-row-hover);
+    }
+
+    /* Spanned Brand Header Column */
+    .brand-cell {
+      font-weight: 700;
+      color: #0f172a;
+      background-color: inherit;
+      text-align: left;
+      vertical-align: middle;
+      padding-left: 18px;
+    }
+
+    /* Table Footer */
+    tfoot tr {
+      background-color: var(--color-header-bg);
+      color: var(--color-header-text);
+      font-weight: 700;
+    }
+
+    tfoot th, tfoot td {
+      border: 1px solid var(--color-header-bg);
+      padding: 14px 16px;
+    }
+
+    /* Bottom Information Box */
+    .info-callout {
+      margin-top: 36px;
+      padding: 18px 24px;
+      background-color: var(--color-info-box-bg);
+      border: 1px solid var(--color-info-box-border);
+      border-radius: 8px;
+      color: var(--color-info-box-text);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-container">
+    <!-- Header Block -->
+    <div class="assignment-meta">BTECH YEAR 1 / HTML & CSS / ASSIGNMENT 04 &bull; YATHARTH VARSHNEY</div>
+    <h1 class="main-title">The Big Styled Table</h1>
+    <p class="sub-title">Week 4 &middot; 20 data rows &times; 10 columns &bull; Submitted by Yatharth Varshney</p>
+
+    <div class="table-wrapper">
+      <table>
+        <!-- Caption -->
+        <caption>Campus Store &middot; T-Shirt Size &amp; Stock Chart</caption>
+
+        <!-- 10 Columns Structure Across 2 Rows in thead -->
+        <thead>
+          <tr>
+            <th scope="col" rowspan="2">Brand</th>
+            <th scope="col" rowspan="2">SKU</th>
+            <th scope="col" rowspan="2">Size</th>
+            <!-- Colspan #1: Spanning the 4 measurement sub-columns -->
+            <th scope="colgroup" colspan="4">Measurements (inches)</th>
+            <th scope="col" rowspan="2">Colour</th>
+            <th scope="col" rowspan="2">Stock</th>
+            <th scope="col" rowspan="2">Price</th>
+          </tr>
+          <tr>
+            <th scope="col" class="sub-th">Chest</th>
+            <th scope="col" class="sub-th">Waist</th>
+            <th scope="col" class="sub-th">Length</th>
+            <th scope="col" class="sub-th">Sleeve</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- ---------------- BLOCK 1: Campus (Rows 1 to 10) ---------------- -->
+          <tr>
+            <!-- Rowspan #1: 10 rows for Campus brand -->
+            <th scope="rowgroup" rowspan="10" class="brand-cell">Campus</th>
+            <td>TS-01</td>
+            <td>S</td>
+            <td>36</td>
+            <td>30</td>
+            <td>26</td>
+            <td>16</td>
+            <td>Navy</td>
+            <td>12</td>
+            <td>₹499</td>
+          </tr>
+          <tr>
+            <td>TS-02</td>
+            <td>M</td>
+            <td>38</td>
+            <td>32</td>
+            <td>27</td>
+            <td>17</td>
+            <td>White</td>
+            <td>13</td>
+            <td>₹519</td>
+          </tr>
+          <tr>
+            <td>TS-03</td>
+            <td>L</td>
+            <td>40</td>
+            <td>34</td>
+            <td>28</td>
+            <td>18</td>
+            <td>Olive</td>
+            <td>14</td>
+            <td>₹539</td>
+          </tr>
+          <tr>
+            <td>TS-04</td>
+            <td>XL</td>
+            <td>42</td>
+            <td>36</td>
+            <td>29</td>
+            <td>16</td>
+            <td>Black</td>
+            <td>15</td>
+            <td>₹559</td>
+          </tr>
+          <tr>
+            <td>TS-05</td>
+            <td>S</td>
+            <td>36</td>
+            <td>30</td>
+            <td>26</td>
+            <td>17</td>
+            <td>Navy</td>
+            <td>16</td>
+            <td>₹579</td>
+          </tr>
+          <tr>
+            <td>TS-06</td>
+            <td>M</td>
+            <td>38</td>
+            <td>32</td>
+            <td>27</td>
+            <td>18</td>
+            <td>White</td>
+            <td>17</td>
+            <td>₹599</td>
+          </tr>
+          <tr>
+            <td>TS-07</td>
+            <td>L</td>
+            <td>40</td>
+            <td>34</td>
+            <td>28</td>
+            <td>16</td>
+            <td>Olive</td>
+            <td>18</td>
+            <td>₹619</td>
+          </tr>
+          <tr>
+            <td>TS-08</td>
+            <td>XL</td>
+            <td>42</td>
+            <td>36</td>
+            <td>29</td>
+            <td>17</td>
+            <td>Black</td>
+            <td>19</td>
+            <td>₹639</td>
+          </tr>
+          <tr>
+            <td>TS-09</td>
+            <td>S</td>
+            <td>36</td>
+            <td>30</td>
+            <td>26</td>
+            <td>18</td>
+            <td>Navy</td>
+            <td>20</td>
+            <td>₹659</td>
+          </tr>
+          <tr>
+            <td>TS-10</td>
+            <td>M</td>
+            <td>38</td>
+            <td>32</td>
+            <td>27</td>
+            <td>16</td>
+            <td>White</td>
+            <td>21</td>
+            <td>₹679</td>
+          </tr>
+
+          <!-- ---------------- BLOCK 2: Everyday (Rows 11 to 20) ---------------- -->
+          <tr>
+            <!-- Rowspan #2: 10 rows for Everyday brand -->
+            <th scope="rowgroup" rowspan="10" class="brand-cell">Everyday</th>
+            <td>TS-11</td>
+            <td>L</td>
+            <td>40</td>
+            <td>34</td>
+            <td>28</td>
+            <td>17</td>
+            <td>Olive</td>
+            <td>22</td>
+            <td>₹699</td>
+          </tr>
+          <tr>
+            <td>TS-12</td>
+            <td>XL</td>
+            <td>42</td>
+            <td>36</td>
+            <td>29</td>
+            <td>18</td>
+            <td>Black</td>
+            <td>23</td>
+            <td>₹719</td>
+          </tr>
+          <tr>
+            <td>TS-13</td>
+            <td>S</td>
+            <td>36</td>
+            <td>30</td>
+            <td>26</td>
+            <td>16</td>
+            <td>Navy</td>
+            <td>24</td>
+            <td>₹739</td>
+          </tr>
+          <tr>
+            <td>TS-14</td>
+            <td>M</td>
+            <td>38</td>
+            <td>32</td>
+            <td>27</td>
+            <td>17</td>
+            <td>White</td>
+            <td>25</td>
+            <td>₹759</td>
+          </tr>
+          <tr>
+            <td>TS-15</td>
+            <td>L</td>
+            <td>40</td>
+            <td>34</td>
+            <td>28</td>
+            <td>18</td>
+            <td>Olive</td>
+            <td>26</td>
+            <td>₹779</td>
+          </tr>
+          <tr>
+            <td>TS-16</td>
+            <td>XL</td>
+            <td>42</td>
+            <td>36</td>
+            <td>29</td>
+            <td>16</td>
+            <td>Black</td>
+            <td>27</td>
+            <td>₹799</td>
+          </tr>
+          <tr>
+            <td>TS-17</td>
+            <td>S</td>
+            <td>36</td>
+            <td>30</td>
+            <td>26</td>
+            <td>17</td>
+            <td>Navy</td>
+            <td>28</td>
+            <td>₹819</td>
+          </tr>
+          <tr>
+            <td>TS-18</td>
+            <td>M</td>
+            <td>38</td>
+            <td>32</td>
+            <td>27</td>
+            <td>18</td>
+            <td>White</td>
+            <td>29</td>
+            <td>₹839</td>
+          </tr>
+          <tr>
+            <td>TS-19</td>
+            <td>L</td>
+            <td>40</td>
+            <td>34</td>
+            <td>28</td>
+            <td>16</td>
+            <td>Olive</td>
+            <td>30</td>
+            <td>₹859</td>
+          </tr>
+          <tr>
+            <td>TS-20</td>
+            <td>XL</td>
+            <td>42</td>
+            <td>36</td>
+            <td>29</td>
+            <td>17</td>
+            <td>Black</td>
+            <td>31</td>
+            <td>₹879</td>
+          </tr>
+        </tbody>
+
+        <!-- tfoot with Colspan #2 -->
+        <tfoot>
+          <tr>
+            <!-- Colspan #2: Spans 8 columns across to align total stock and currency -->
+            <th scope="row" colspan="8">Total stock &middot; 20 variants</th>
+            <td>430</td>
+            <td>INR</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Bottom Instructions Callout -->
+    <div class="info-callout">
+      Header and footer show colspan; each brand cell spans 10 rows. Use caption, thead/tbody/tfoot, scoped headers, 5+ CSS variables, striped rows and a hover highlight.
+    </div>
+
+    <div class="footer-note">
+      Sample content and design. Follow ASSIGNMENTS.md for code, Git and README requirements.
+    </div>
+  </div>
+
+</body>
+</html>

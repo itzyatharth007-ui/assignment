@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTECH YEAR 1 / HTML & CSS / ASSIGNMENT 05 - Yatharth Varshney</title>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-container">
+
+    <!-- Top Assignment Meta Header -->
+    <header class="assignment-header">
+      <p class="meta-tag">BTECH YEAR 1 ASSIGNMENT 04</p>
+      <h1 class="page-title">Style Your Portfolio (v2)</h1>
+      <p class="meta-sub">Weeks 5-6  The original portfolio, Illustrative expected output</p>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav class="navbar" id="top-nav">
+      <div class="nav-brand">YATHARTH / PORTFOLIO</div>
+      <ul class="nav-links">
+        <li><a href="#about">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-card" id="hero">
+      <div class="hero-content">
+        <span class="hero-badge">HELLO, I'M YATHARTH</span>
+        <h2 class="hero-headline">Curious mind.<br>Future web developer.</h2>
+        <p class="hero-desc">First-year BTech student building useful web pages.</p>
+        <a href="#projects" class="btn-primary">View projects</a>
+      </div>
+      
+      <!-- Minimalist Silhouette / Avatar placeholder -->
+      <div class="hero-avatar-box">
+        <svg class="avatar-svg" viewBox="0 0 100 120">
+          <circle cx="50" cy="35" r="20" fill="var(--color-accent-teal)" />
+          <path d="M 15 110 C 15 70, 85 70, 85 110 Z" fill="var(--color-accent-teal)" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Content Sections -->
+    <main class="main-content">
+      
+      <!-- About Me -->
+      <section class="content-block" id="about">
+        <h3>About me</h3>
+        <p>I enjoy learning how the web works and building clear, accessible pages.</p>
+      </section>
+
+      <!-- Skills -->
+      <section class="content-block" id="skills">
+        <h3>Skills</h3>
+        <p class="skills-list">HTML; CSS ; Git ; GitHub ; Problem solving</p>
+      </section>
+
+      <!-- Education -->
+      <section class="content-block" id="education">
+        <h3>Education ; My College / My Course</h3>
+        <p class="edu-meta">BTech, Computer Science ; 2026-2030</p>
+        <ul class="bullet-list">
+          <li>Invertis University</li>
+          <li>B.Tech in Computer Science</li>
+        </ul>
+        <ol class="num-list">
+          <li>HTML structure</li>
+          <li>CSS foundations</li>
+          <li>Responsive layouts</li>
+        </ol>
+        <p class="topic-keys">HTML ; Page structure ; CSS ; Page presentation</p>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="content-block" id="projects">
+        <h3>Selected projects</h3>
+        <div class="projects-grid">
+          
+          <!-- Project Card 1 -->
+          <article class="project-card">
+            <div class="project-art">
+              <!-- Geometric Landscape Graphic -->
+              <svg viewBox="0 0 400 150" href="./src/my first webpage.html" xmlns="http://www.w3.org/2000/svg" class="art-svg">
+                <rect width="100%" height="100%" fill="#dff0e6" />
+                <circle cx="320" cy="45" r="22" fill="#fef08a" />
+                <polygon points="-20,150 140,40 280,150" fill="#609983" />
+                <polygon points="120,150 300,55 430,150" fill="#3b6959" />
+              </svg>
+            </div>
+            <div class="project-info">
+              <h4>My First Web Page</h4>
+              <p>Semantic HTML and internal navigation.</p>
+              <p><a href="./src/my 20first 20webpage.html"> <strong>Open my first webpage</strong></a></p>
+            </div>
+          </article>
+
+          <!-- Project Card 2 -->
+          <article class="project-card">
+            <div class="project-art">
+              <!-- Geometric Landscape Graphic -->
+              <svg viewBox="0 0 400 150"  href="./src/T-Shirt Size & Stock .html Size & Stock /" xmlns="http://www.w3.org/2000/svg" class="art-svg">
+                <rect width="100%" height="100%" fill="#dff0e6" />
+                <circle cx="340" cy="45" r="22" fill="#fef08a" />
+                <polygon points="-30,150 130,48 290,150" fill="#609983" />
+                <polygon points="140,150 310,60 440,150" fill="#3b6959" />
+              </svg>
+            </div>
+            <div class="project-info">
+              <h4>T-Shirt Size & Stock </h4>
+              <p>A readable table with grouped headings.</p>
+              <p><a href="./src/T-Shirt Size & Stock .html Size & Stock /"> <strong>Open T-Shirt Size & Stock</strong></a></p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="content-block" id="contact">
+        <h3>Contact</h3>
+        <p>Let&rsquo;s learn and build together. <a href="mailto:yatharth@example.com" class="email-link">yatharth@example.com</a></p>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Footer -->
+    <footer class="site-footer">
+      <div class="footer-copy">&copy; 2026 YATHARTH VARSHNEY</div>
+      <ul class="footer-links">
+        <li><a href="#about">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </footer>
+
+    <!-- Assignment Prompt Callout Note -->
+    <div class="info-callout">
+      Add an external stylesheet, 4+ selector types, a heading/body font pairing, :root design tokens, hover effects and a README note explaining your design choices.
+    </div>
+    <div class="footer-note">
+      Sample content and design. Follow ASSIGNMENTS.md for code, Git and README requirements.
+    </div>
+
+  </div>
+
+</body>
+</html>
