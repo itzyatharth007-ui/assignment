@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Yatharth.Varshney">
+  <title>Admin Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Full-height layout using named grid areas */
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      grid-template-rows: 60px 1fr 50px;
+      grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+    }
+
+    .dashboard-header {
+      grid-area: header;
+      background-color: #1a202c;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .dashboard-sidebar {
+      grid-area: sidebar;
+      background-color: #2d3748;
+      color: #cbd5e0;
+      padding: 1.5rem;
+    }
+
+    .dashboard-sidebar ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .dashboard-sidebar li {
+      padding: 0.6rem 0;
+      cursor: pointer;
+    }
+
+    .dashboard-sidebar li:hover {
+      color: #fff;
+    }
+
+    .dashboard-main {
+      grid-area: main;
+      background-color: #f7fafc;
+      padding: 2rem;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat-card {
+      background: #fff;
+      padding: 1.25rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2e8f0;
+    }
+
+    .stat-card h3 {
+      font-size: 0.85rem;
+      color: #718096;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card p {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2d3748;
+    }
+
+    .dashboard-footer {
+      grid-area: footer;
+      background-color: #edf2f7;
+      color: #4a5568;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h2>App Control Center</h2>
+      <span>Signed in as: Yatharth.Varshney</span>
+    </header>
+
+    <aside class="dashboard-sidebar">
+      <strong>Navigation</strong>
+      <ul>
+        <li>Overview</li>
+        <li>Analytics</li>
+        <li>Users</li>
+        <li>System Settings</li>
+      </ul>
+    </aside>
+
+    <main class="dashboard-main">
+      <h1>Dashboard Overview</h1>
+      <p>Performance metrics and active operational nodes.</p>
+
+      <div class="stats-container">
+        <div class="stat-card">
+          <h3>Total Users</h3>
+          <p>12,450</p>
+        </div>
+        <div class="stat-card">
+          <h3>Active Sessions</h3>
+          <p>842</p>
+        </div>
+        <div class="stat-card">
+          <h3>Revenue</h3>
+          <p>₹1,24,500</p>
+        </div>
+        <div class="stat-card">
+          <h3>Server Load</h3>
+          <p>23%</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="dashboard-footer">
+      <p>&copy; 2026 Admin Suite &mdash; Built by Yatharth.Varshney</p>
+    </footer>
+  </div>
+
+</body>
+</html>

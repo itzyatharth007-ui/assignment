@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Yatharth.Varshney">
+  <title>Auto-Reflowing Product Grid</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+      background-color: #fafafa;
+      color: #222;
+    }
+
+    header {
+      max-width: 1200px;
+      margin: 0 auto 2rem auto;
+    }
+
+    h1 {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Auto-reflow using auto-fit and minmax() */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: 140px;
+      background-color: #edf2f7;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #718096;
+      font-size: 0.85rem;
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-weight: 700;
+      color: #2b6cb0;
+      margin-bottom: 1rem;
+    }
+
+    .buy-btn {
+      background: #2b6cb0;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.6rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background: #2c5282;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Product Catalog</h1>
+    <p>Curated by Yatharth.Varshney</p>
+  </header>
+
+  <main class="product-grid">
+    <div class="product-card">
+      <div class="thumbnail"><img src="./src/Mechanical Keyboard.jpg" alt="Mechanical Keyboard" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <h2 class="product-title">Mechanical Keyboard</h2>
+      <p class="product-price">₹4,999</p>
+      <button class="buy-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <div class="thumbnail"><img src="./src/Wireless Mouse.jpg" alt="Wireless Mouse" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <h2 class="product-title">Wireless Mouse</h2>
+      <p class="product-price">₹1,499</p>
+      <button class="buy-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <div class="thumbnail"><img src="./src/USB-C Hub.jpg" alt="USB-C Hub" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <h2 class="product-title">USB-C Hub</h2>
+      <p class="product-price">₹2,199</p>
+      <button class="buy-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <div class="thumbnail"><img src="./src/Desk Mat.jpg" alt="Desk mat" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <h2 class="product-title">Desk Mat</h2>
+      <p class="product-price">₹799</p>
+      <button class="buy-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <div class="thumbnail"><img src="./src/Laptop Stand.jpg" alt="Laptop Stand" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <h2 class="product-title">Laptop Stand</h2>
+      <p class="product-price">₹1,899</p>
+      <button class="buy-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <div class="thumbnail"><img src="./src/Noise-Cancelling Headphones.jpg" alt="Noise-Cancelling Headphones" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      <h2 class="product-title">Noise-Cancelling Headphones</h2>
+      <p class="product-price">₹8,499</p>
+      <button class="buy-btn">Add to Cart</button>
+    </div>
+  </main>
+
+</body>
+</html>

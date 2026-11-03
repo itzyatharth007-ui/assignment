@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Yatharth.Varshney">
+  <title>Photo Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #333;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .back-button {
+      margin-top: 1rem;
+      padding: 0.5rem 0.75rem;
+      border: 0;
+      border-radius: 6px;
+      background-color: #333;
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* CSS Grid Implementation */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .caption {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Photo Gallery</h1>
+    <p>Curated by Yatharth.Varshney</p>
+    <button class="back-button" type="button" onclick="if (history.length > 1) history.back(); else location.href = 'product-grid.html';">&#8592; Previous page</button>
+    <nav aria-label="Main navigation">
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="product-grid.html">Products</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="gallery-grid">
+    <div class="gallery-item">
+      <img src="./src/Mountain Vista.jpg" alt="Mountain landscape">
+      <div class="caption">Mountain Vista</div>
+    </div>
+    <div class="gallery-item">
+      <img src="./src/Deep Ocean.jpg" alt="Ocean waves">
+      <div class="caption">Deep Ocean</div>
+    </div>
+    <div class="gallery-item">
+      <img src="./src/Pine Forest.jpg " alt="Forest trail">
+      <div class="caption">Pine Forest</div>
+    </div>
+    <div class="gallery-item">
+      <img src="./src/Desert Sands.jpg" alt="Desert dunes">
+      <div class="caption">Desert Sands</div>
+    </div>
+    <div class="gallery-item">
+      <img src="./src/Urban Lights.jpg" alt="City skyline">
+      <div class="caption">Urban Lights</div>
+    </div>
+    <div class="gallery-item">
+      <img src="./src/Serene River.jpg" alt="River reflection">
+      <div class="caption">Serene River</div>
+    </div>
+    <div class="gallery-item">
+      <img src="./src/Golden Canopy.jpg" alt="Autumn trees">
+      <div class="caption">Golden Canopy</div>
+    </div>
+    <div class="gallery-item">
+      <img src="./src/Morning Mist.jpg" alt="Misty valley">
+      <div class="caption">Morning Mist</div>
+    </div>
+    <div class="gallery-item">
+      <img src="./src/Starry Horizon.jpg" alt="Night sky">
+      <div class="caption">Starry Horizon</div>
+    </div>
+  </main>
+
+</body>
+</html>
