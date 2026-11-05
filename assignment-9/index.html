@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Campus Collective - A modern responsive ecosystem for students to collaborate, build projects, and find mentors.">
+  <meta name="author" content="Yatharth.Varshney">
+  <title>Assignment 9 | Campus Collective (Enhanced)</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==================================================
+       DESIGN TOKENS & SYSTEM VARIABLES
+       ================================================== */
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Color Palette */
+      --brand-header: #0a2e33;
+      --brand-teal: #0f766e;
+      --brand-teal-hover: #115e59;
+      --brand-accent: #2dd4bf;
+      --brand-badge-bg: rgba(45, 212, 191, 0.12);
+      
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-hero: #e6f4f1;
+      --bg-card: #ffffff;
+      
+      --border-subtle: #e2e8f0;
+      --border-card: #cbd5e1;
+      --border-focus: #0f766e;
+
+      --text-main: #0f2d37;
+      --text-muted: #475569;
+      --text-light: #ffffff;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 118, 110, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      
+      --transition-standard: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --max-width: 1140px;
+    }
+
+    /* --------------------------------------------------
+       RESET & ACCESSIBILITY DEFAULTS
+       -------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: var(--font-sans);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* --------------------------------------------------
+       HEADER & NAVIGATION (Flexbox)
+       -------------------------------------------------- */
+    header {
+      background-color: var(--brand-header);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.75px;
+      color: var(--text-light);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-icon {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--brand-accent);
+      box-shadow: 0 0 10px var(--brand-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 1.75rem;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--transition-standard);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--brand-accent);
+      transition: var(--transition-standard);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-light);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* --------------------------------------------------
+       HERO BANNER
+       -------------------------------------------------- */
+    .hero {
+      background: linear-gradient(180deg, var(--bg-hero) 0%, rgba(230, 244, 241, 0.45) 100%);
+      padding: 5rem 0 4.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background-color: var(--brand-badge-bg);
+      border: 1px solid rgba(45, 212, 191, 0.3);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--brand-teal);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: 2.85rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      color: var(--brand-teal);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+
+    /* --------------------------------------------------
+       ACTION BUTTONS (Flexbox)
+       -------------------------------------------------- */
+    .btn-action-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 46px;
+      padding: 0.65rem 1.6rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-standard);
+    }
+
+    .btn-primary {
+      background-color: var(--brand-teal);
+      color: var(--text-light);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--brand-teal-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-card);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--brand-teal);
+      color: var(--brand-teal);
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------------------------
+       FEATURES & SERVICES SECTION (Grid & Flexbox)
+       -------------------------------------------------- */
+    .features-section {
+      padding: 4.5rem 0 3rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-standard);
+      position: relative;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-teal);
+    }
+
+    .card-meta {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--brand-teal);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* --------------------------------------------------
+       GALLERY GRID SECTION
+       -------------------------------------------------- */
+    .gallery-section {
+      padding: 1.5rem 0 3.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      background-color: var(--bg-hero);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-standard);
+    }
+
+    .gallery-item:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .gallery-item svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --------------------------------------------------
+       CALL TO ACTION BLOCK
+       -------------------------------------------------- */
+    .cta-section {
+      padding: 1rem 0 4.5rem;
+    }
+
+    .cta-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cta-card h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
+
+    .cta-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* --------------------------------------------------
+       FOOTER (Flexbox)
+       -------------------------------------------------- */
+    footer {
+      background-color: var(--brand-header);
+      color: var(--text-light);
+      padding: 1.25rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+
+    .footer-copy strong {
+      color: var(--text-light);
+    }
+
+    .footer-nav {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .footer-nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: var(--transition-standard);
+    }
+
+    .footer-nav a:hover {
+      color: var(--brand-accent);
+    }
+
+    /* ==================================================
+       BREAKPOINT 1: TABLET (max-width: 768px)
+       ================================================== */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 3.5rem 0;
+      }
+
+      .hero-title {
+        font-size: 2.25rem;
+      }
+
+      /* 2-Column Responsive Reflow */
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+
+      .cta-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* ==================================================
+       BREAKPOINT 2: MOBILE (max-width: 480px / 375px)
+       ================================================== */
+    @media (max-width: 480px) {
+      /* Stacked Mobile Navigation Bar */
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.85rem;
+        padding: 1.2rem 1rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem 1.25rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hero {
+        padding: 2.75rem 0;
+      }
+
+      .hero-title {
+        font-size: 1.85rem;
+      }
+
+      .hero-desc {
+        font-size: 0.95rem;
+      }
+
+      .btn-action-wrapper {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      /* Single Column Full Width for Cards & Visuals */
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      /* Mobile Footer */
+      .footer-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.2rem 1rem;
+      }
+
+      .footer-nav {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation Bar (Flexbox) -->
+  <header>
+    <div class="navbar">
+      <a href="#home" class="brand-logo">
+        <span class="brand-icon"></span>
+        CAMPUS COLLECTIVE
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Learn  Build ; Belong</div>
+        <h1 class="hero-title">Your next big idea<br>starts <span>on campus.</span></h1>
+        <p class="hero-desc">A collaborative ecosystem for curious students to master modern development, engineer open-source software, and exchange ideas.</p>
+        <div class="btn-action-wrapper">
+          <a href="#join" class="btn btn-primary">Join Community</a>
+          <a href="#services" class="btn btn-secondary">Explore Tracks</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Features Section (Grid & Flexbox) -->
+  <main id="services" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Learn. Build.<br>Belong.</h2>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div>
+            <span class="card-meta">Track 01 ; Collaboration</span>
+            <h3>Learn together</h3>
+            <p>Form weekly study cohorts, review code in groups, and solve algorithmic challenges together.</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div>
+            <span class="card-meta">Track 02 ; Engineering</span>
+            <h3>Build projects</h3>
+            <p>Transform conceptual ideas into production-grade web applications, tools, and portfolios.</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div>
+            <span class="card-meta">Track 03 ; Guidance</span>
+            <h3>Find mentors</h3>
+            <p>Connect with senior developers and alumni working on real systems across the industry.</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div>
+            <span class="card-meta">Track 04 ; Brainstorming</span>
+            <h3>Share ideas</h3>
+            <p>Pitch innovative project prototypes, recruit teammates, and launch multi-disciplinary efforts.</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div>
+            <span class="card-meta">Track 05 ; Community</span>
+            <h3>Join events</h3>
+            <p>Participate in campus hackathons, technical speaker sessions, and hands-on workshops.</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div>
+            <span class="card-meta">Track 06; Career</span>
+            <h3>Grow your skills</h3>
+            <p>Track measurable milestone progression every week and prepare for technical internships.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Life in the Community Gallery (Grid) -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Life in the community</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <svg viewBox="0 0 400 225" preserveAspectRatio="none" role="img" aria-label="Mountain landscape illustration in teal tones with pale sun">
+            <image href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format;fit=crop;w=800;q=80" x="0" y="0" width="400" height="225" preserveAspectRatio="xMidYMid slice"/>
+          </svg>
+        </div>
+
+        <div class="gallery-item">
+          <svg viewBox="0 0 400 225" preserveAspectRatio="none" role="img" aria-label="Mountain valley illustration in rich greens at sunrise">
+            <image href="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format;fit=crop;w=800;q=80" x="0" y="0" width="400" height="225" preserveAspectRatio="xMidYMid slice"/>
+          </svg>
+        </div>
+
+        <div class="gallery-item">
+          <svg viewBox="0 0 400 225" preserveAspectRatio="none" role="img" aria-label="Layered foothills under a bright dawn sky">
+            <image href="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format;fit=crop;w=800;q=80" x="0" y="0" width="400" height="225" preserveAspectRatio="xMidYMid slice"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Call To Action Block -->
+  <section id="join" class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div>
+          <h2>Ready to build something?</h2>
+          <p>Get in touch or join the discord server to register for the next sprint.</p>
+        </div>
+        <div class="btn-action-wrapper">
+          <a href="#contact" class="btn btn-primary">Get Involved ;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (Flexbox) -->
+  <footer id="contact">
+    <div class="footer-wrapper">
+      <div class="footer-copy">
+         2026 CAMPUS COLLECTIVE ; Author: <strong>Yatharth.Varshney</strong>
+        <div class="contact-details">
+          <a href="mailto:yatharth@gmail.com">yatharth@gmail.com</a>
+          <span> | </span>
+          <a href="tel:+919876543210">+91 98765 43210</a>
+        </div>
+      </div>
+      <nav aria-label="Footer Navigation">
+        <ul class="footer-nav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
